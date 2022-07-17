@@ -1,6 +1,4 @@
 import { ReactNode } from 'react'
-import { ThemeProvider } from '@mui/material/styles'
-import { mainTheme } from 'components/theme'
 import { styled } from '@mui/material/styles'
 import Button from '@mui/material/Button'
 
@@ -8,15 +6,13 @@ export const BaseButton = (props: { children: ReactNode; color: 'primary' | 'sec
   const { children, color } = props
 
   return (
-    <ThemeProvider theme={mainTheme}>
-      <BaseStyleButton variant="contained" color={color}>
-        {children}
-      </BaseStyleButton>
-    </ThemeProvider>
+    <SBaseButton variant="contained" color={color}>
+      {children}
+    </SBaseButton>
   )
 }
 
-const BaseStyleButton = styled(Button)`
+const SBaseButton = styled(Button)`
   border-radius: 9999px;
   color: white;
   background-image: ${({ theme, color }) => {
