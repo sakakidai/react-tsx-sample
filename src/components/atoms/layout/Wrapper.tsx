@@ -10,5 +10,5 @@ const SWrapper = styled('div')`
   margin: 0;
   background-color: #fdf5f5;
   width: 100%;
-  height: 100%;
+  flex-grow: 1;
 `
