@@ -1,19 +1,29 @@
-import { ThemeProvider, styled } from '@mui/material/styles'
+import { Global, css } from '@emotion/react'
+import { ThemeProvider } from '@mui/material/styles'
 import { mainTheme } from 'components/theme'
 
-import { Home } from 'components/pages/Home'
+import { Router } from 'router/Router'
 
 export const App = () => {
   return (
-    <ThemeProvider theme={mainTheme}>
-      <SContainer>
-        <Home />
-      </SContainer>
-    </ThemeProvider>
+    <>
+      <Global styles={GlobalStyles} />
+      <ThemeProvider theme={mainTheme}>
+        <Router />
+      </ThemeProvider>
+    </>
   )
 }
 
-const SContainer = styled('div')`
-  min-height: 100vh;
-  background-color: #fdf5f5;
+const GlobalStyles = css`
+  body {
+    font-family: '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', sans-serif;
+    color: #333333;
+    margin: 0;
+    min-height: 100vh;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `

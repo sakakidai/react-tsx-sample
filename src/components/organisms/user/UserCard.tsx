@@ -1,5 +1,7 @@
 import { styled } from '@mui/material/styles'
+
 import { UserType } from 'types/user'
+
 import { Card } from 'components/atoms/card/Card'
 import { UserIconWithName } from 'components/molecules/user/UserIconWithName'
 

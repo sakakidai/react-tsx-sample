@@ -12,5 +12,5 @@ export const Card = (props: { children: ReactNode }) => {
 }
 
 const SContainer = styled('div')`
-  margin: 10px 20px;
+  margin: 20px;
 `
