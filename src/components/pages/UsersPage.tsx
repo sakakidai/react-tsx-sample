@@ -1,24 +1,24 @@
+import { useState, useEffect, memo, FC } from 'react'
+import axios from 'axios'
 import { styled } from '@mui/material/styles'
 
 import { Container, Grid } from '@mui/material'
 import { SeachInput } from 'components/molecules/SerchInput'
 import { UserCard } from 'components/organisms/user/UserCard'
 
-const users = [...(Array(10).keys() as any)].map((val) => {
-  return {
-    id: val,
-    name: `さかき-${val}`,
-    email: 'sakakiddddddddddd@example.com',
-    phone: '090-1111-2222',
-    image: 'https://source.unsplash.com/7iSl3XkJkDM',
-    website: 'https://google.com',
-    company: {
-      name: '株式会社サムブーク',
-    },
-  }
-})
+import { useAllUsers } from 'hooks/useAllUsers'
 
-export const UsersPage = () => {
+export const UsersPage: FC = memo(() => {
+  const { getUsers, users, loading } = useAllUsers()
+
+  useEffect(() => {
+    getUsers()
+  }, [])
+
+  if (loading) {
+    return <p>loading...</p>
+  }
+
   return (
     <SContainer>
       <Grid container spacing={2}>
@@ -35,7 +35,7 @@ export const UsersPage = () => {
       </Grid>
     </SContainer>
   )
-}
+})
 
 const SContainer = styled(Container)`
   margin-top: 16px;

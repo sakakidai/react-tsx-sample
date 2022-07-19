@@ -5,7 +5,7 @@ import { Card as MuiCard } from '@mui/material'
 export const Card = (props: { children: ReactNode }) => {
   const { children } = props
   return (
-    <MuiCard sx={{ maxWidth: 345 }} raised={true}>
+    <MuiCard sx={{ maxWidth: 350 }} raised={true}>
       <SContainer>{children}</SContainer>
     </MuiCard>
   )
