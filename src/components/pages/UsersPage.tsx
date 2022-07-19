@@ -1,10 +1,10 @@
-import { useState, useEffect, memo, FC } from 'react'
-import axios from 'axios'
+import { useEffect, memo, FC } from 'react'
 import { styled } from '@mui/material/styles'
 
 import { Container, Grid } from '@mui/material'
 import { SeachInput } from 'components/molecules/SerchInput'
 import { UserCard } from 'components/organisms/user/UserCard'
+import { Spinner } from 'components/atoms/spinner/Spinner'
 
 import { useAllUsers } from 'hooks/useAllUsers'
 
@@ -16,7 +16,7 @@ export const UsersPage: FC = memo(() => {
   }, [])
 
   if (loading) {
-    return <p>loading...</p>
+    return <Spinner />
   }
 
   return (

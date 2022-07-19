@@ -11,7 +11,6 @@ export const useAllUsers = () => {
     setLoading(true)
     try {
       const res = await axios.get('https://jsonplaceholder.typicode.com/users')
-      console.log(res.data)
       setUsers(res.data)
     } catch (e) {
       console.log(e)

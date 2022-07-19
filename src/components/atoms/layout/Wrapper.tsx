@@ -7,6 +7,10 @@ export const Wrapper = (props: { children: ReactNode }) => {
 }
 
 const SWrapper = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   background-color: #fdf5f5;
   width: 100%;
