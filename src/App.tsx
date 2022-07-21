@@ -1,6 +1,6 @@
 import { Global, css } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
-import { mainTheme } from 'components/theme'
+import { mainTheme } from 'theme/theme'
 
 import { Router } from 'router/Router'
 
