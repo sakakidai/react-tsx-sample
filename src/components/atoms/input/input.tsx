@@ -1,4 +1,4 @@
-import { InputBase, OutlinedInput } from '@mui/material'
+import { OutlinedInput } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 export const Input = (props: { placeholder?: string }) => {

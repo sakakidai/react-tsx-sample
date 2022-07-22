@@ -2,20 +2,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { styled } from '@mui/material/styles'
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Box,
-  SwipeableDrawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
-import InboxIcon from '@mui/icons-material/Inbox'
+import { AppBar, Toolbar, IconButton, Box } from '@mui/material'
+import { MenuIconButton } from 'components/atoms/button/MenuIconButton'
+import { MenuDrawer } from 'components/molecules/MenuDrawer'
 
 export const Header = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false)
@@ -41,48 +30,12 @@ export const Header = () => {
               </SLinkWrapper>
             </Box>
             <Box display={{ xs: 'block', sm: 'none' }}>
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 2 }}
-                onClick={() => toggleDrawer(true)}
-              >
-                <MenuIcon />
-              </IconButton>
+              <MenuIconButton onOpen={() => toggleDrawer(true)} />
             </Box>
           </SLinkList>
         </Toolbar>
       </SAppBar>
-      <SwipeableDrawer
-        anchor="right"
-        open={isOpenDrawer}
-        onClose={() => setIsOpenDrawer(false)}
-        onOpen={() => setIsOpenDrawer(true)}
-      >
-        <Box
-          sx={{ width: 250 }}
-          role="presentation"
-          onClick={() => setIsOpenDrawer(false)}
-          onKeyDown={() => setIsOpenDrawer(false)}
-        >
-          <List>
-            {['TOP', 'ユーザー一覧', '設定'].map((text) => {
-              return (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </ListItem>
-              )
-            })}
-          </List>
-        </Box>
-      </SwipeableDrawer>
+      <MenuDrawer isOpenDrawer={isOpenDrawer} onClose={() => toggleDrawer(false)} />
     </>
   )
 }

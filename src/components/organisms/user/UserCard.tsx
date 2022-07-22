@@ -1,4 +1,4 @@
-import { memo, FC } from 'react'
+import { memo } from 'react'
 import { styled } from '@mui/material/styles'
 
 import { UserType } from 'types/user'
@@ -10,7 +10,7 @@ type Props = {
   user: UserType
 }
 
-export const UserCard: FC<Props> = (props) => {
+export const UserCard = memo((props: Props) => {
   const { user } = props
   return (
     <Card>
@@ -27,7 +27,7 @@ export const UserCard: FC<Props> = (props) => {
       </SDl>
     </Card>
   )
-}
+})
 
 const SDl = styled('dl')`
   width: 300px;

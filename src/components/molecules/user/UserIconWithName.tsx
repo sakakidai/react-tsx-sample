@@ -1,8 +1,15 @@
+import { memo } from 'react'
+
 import { styled } from '@mui/material/styles'
 import { Container } from '@mui/material'
 import { Avatar } from 'components/atoms/image/Avatar'
 
-export const UserIconWithName = (props: { name: string; image: string }) => {
+type Props = {
+  name: string
+  image: string
+}
+
+export const UserIconWithName = memo((props: Props) => {
   const { name, image } = props
   return (
     <SContainer>
@@ -10,7 +17,7 @@ export const UserIconWithName = (props: { name: string; image: string }) => {
       <SName>{name}</SName>
     </SContainer>
   )
-}
+})
 
 const SContainer = styled(Container)`
   text-align: center;
