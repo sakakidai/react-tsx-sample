@@ -1,7 +1,11 @@
 import { ReactNode } from 'react'
 import { BaseButton } from 'components/atoms/button/BaseButton'
 
-export const SecondaryButton = (props: { children: ReactNode }) => {
+type Props = {
+  children: ReactNode
+}
+
+export const SecondaryButton = (props: Props) => {
   const { children } = props
 
   return <BaseButton color="secondary">{children}</BaseButton>

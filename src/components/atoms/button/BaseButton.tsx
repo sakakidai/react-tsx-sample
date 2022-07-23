@@ -3,8 +3,12 @@ import { styled } from '@mui/material/styles'
 import Button from '@mui/material/Button'
 
 type ColorType = 'primary' | 'secondary'
+type Props = {
+  children: ReactNode
+  color: ColorType
+}
 
-export const BaseButton = (props: { children: ReactNode; color: ColorType }) => {
+export const BaseButton = (props: Props) => {
   const { children, color } = props
 
   return (
