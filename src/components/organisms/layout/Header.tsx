@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { styled } from '@mui/material/styles'
 import { AppBar, Toolbar, IconButton, Box } from '@mui/material'
@@ -7,27 +7,36 @@ import { MenuIconButton } from 'components/atoms/button/MenuIconButton'
 import { MenuDrawer } from 'components/molecules/MenuDrawer'
 
 export const Header = () => {
+  const navigate = useNavigate()
   const [isOpenDrawer, setIsOpenDrawer] = useState(false)
 
   const toggleDrawer = (openState: boolean) => {
     setIsOpenDrawer(openState)
   }
 
+  const onClickHome = useCallback(() => {
+    navigate('/')
+  }, [])
+
+  const onClickUsers = useCallback(() => {
+    navigate('/users')
+  }, [])
+
+  const onClickSettings = useCallback(() => {
+    navigate('/settings')
+  }, [])
+
   return (
     <>
       <SAppBar position="static">
         <Toolbar>
-          <SBrandName>React-tsx</SBrandName>
+          <SBrandName onClick={onClickHome}>React-tsx</SBrandName>
           <SLinkList>
             <Box display={{ xs: 'none', sm: 'block' }}>
-              <SLinkWrapper>
-                <SLink to="/">HOME</SLink>
-              </SLinkWrapper>
+              <SLink onClick={onClickUsers}>ユーザー一覧</SLink>
             </Box>
             <Box display={{ xs: 'none', sm: 'block' }}>
-              <SLinkWrapper>
-                <SLink to="/users">USERS</SLink>
-              </SLinkWrapper>
+              <SLink onClick={onClickSettings}>設定</SLink>
             </Box>
             <Box display={{ xs: 'block', sm: 'none' }}>
               <MenuIconButton onOpen={() => toggleDrawer(true)} />
@@ -35,13 +44,20 @@ export const Header = () => {
           </SLinkList>
         </Toolbar>
       </SAppBar>
-      <MenuDrawer isOpenDrawer={isOpenDrawer} onClose={() => toggleDrawer(false)} />
+      <MenuDrawer
+        isOpenDrawer={isOpenDrawer}
+        onClose={() => toggleDrawer(false)}
+        onClickHome={onClickHome}
+        onClickUsers={onClickUsers}
+        onClickSettings={onClickSettings}
+      />
     </>
   )
 }
 
 const SAppBar = styled(AppBar)`
   color: white;
+  cursor: pointer;
 `
 
 const SBrandName = styled('div')`
@@ -60,12 +76,8 @@ const SLinkList = styled('ul')`
   margin-left: auto;
 `
 
-const SLinkWrapper = styled('li')`
-  margin: 0 1rem;
-`
-
-const SLink = styled(Link)`
-  margin: 0 8px;
+const SLink = styled('li')`
+  margin: 0 16px;
   cursor: pointer;
   transition: color 0.5s;
   &:hover {
