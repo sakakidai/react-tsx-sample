@@ -1,4 +1,4 @@
-import { useEffect, memo, FC } from 'react'
+import { useEffect, memo } from 'react'
 import { styled } from '@mui/material/styles'
 
 import { Container, Grid } from '@mui/material'
@@ -8,7 +8,7 @@ import { Spinner } from 'components/atoms/spinner/Spinner'
 
 import { useAllUsers } from 'hooks/useAllUsers'
 
-export const UsersPage: FC = memo(() => {
+export const UsersPage = memo(() => {
   const { getUsers, users, loading } = useAllUsers()
 
   useEffect(() => {
